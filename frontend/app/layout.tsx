@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/section/Header";
 import Footer from "@/components/section/Footer";
+import {Toaster} from "sonner";
+import AuthProvider from "@/providers/AuthProvider";
+import StoreProvider from "@/providers/StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,11 +33,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className='flex w-full bg-black'>
+            <StoreProvider>
+            <AuthProvider>
             <Header/>
+            <Toaster/>
             <div className='w-full text-white ml-16'>
                 {children}
                 <Footer/>
             </div>
+            </AuthProvider>
+            </StoreProvider>
+
         </div>
       </body>
     </html>

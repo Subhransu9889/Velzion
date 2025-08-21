@@ -57,6 +57,8 @@ export default function Header() {
     { id: "devices", icon: Smartphone, label: "Devices" },
   ]
 
+    const [open, setOpen] = useState(false);
+
   return (
     <div className="fixed left-0 top-12 flex flex-col h-screen w-16 md:w-16 sm:w-12 bg-black items-center py-2 z-50">
       {/* Star logo at the top */}
@@ -87,7 +89,7 @@ export default function Header() {
         ))}
 
         {/* Profile item with Sheet */}
-          <Sheet>
+          <Sheet onOpenChange={setOpen}>
               <SheetTrigger asChild>
                   <button
                       className="group relative transition-transform duration-300 hover:scale-110 cursor-pointer"
@@ -108,7 +110,7 @@ export default function Header() {
                       <SheetTitle>Your Profile</SheetTitle>
                   </SheetHeader>
                   <div className="mt-4 text-sm text-gray-600">
-                      <ProfileSheet />
+                      <ProfileSheet/>
                   </div>
               </SheetContent>
           </Sheet>
