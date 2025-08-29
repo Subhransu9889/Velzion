@@ -1,8 +1,32 @@
+'use client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import React from 'react'
+import {redirect} from "next/navigation";
+import {toast} from "sonner";
 
 function Footer() {
+    const aboutHandler = () => {
+        redirect('/about');
+    }
+    const careerHandler = () => {
+        redirect('/career');
+    }
+    const helpHandler = () => {
+        redirect('/help-center');
+    }
+    const termsHandler = () => {
+        redirect('/termsofuse');
+    }
+    const privacyHandler = () => {
+        redirect('/privacy');
+    }
+    const faqHandler = () => {
+        redirect('/faq');
+    }
+    const languageHandler = () => {
+        toast.success("Website is in English")
+    }
   return (
     <>
         <div className='min-h-70 bg-gray-950 text-white'>
@@ -11,20 +35,20 @@ function Footer() {
                     <div className='h-[30%] flex justify-center md:justify-start items-center'>
                         <h2 className='font-bold text-xl md:text-2xl'>Company</h2>
                     </div>
-                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left'>About Us</p>
-                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left'>Careers</p>
+                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left' onClick={aboutHandler}>About Us</p>
+                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left' onClick={careerHandler}>Careers</p>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <div className='h-[30%] flex justify-center md:justify-start items-center'>
                         <h2 className='font-bold text-xl md:text-2xl'>View Website in</h2>
                     </div>
-                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left'>English</p>
+                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left' onClick={languageHandler}>English</p>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <div className='h-[30%] flex justify-center md:justify-start items-center'>
                         <h2 className='font-bold text-xl md:text-2xl'>Need Help?</h2>
                     </div>
-                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left'>Visit Help Center</p>
+                    <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left' onClick={helpHandler}>Visit Help Center</p>
                     <p className='hover:text-gray-400 hover:cursor-pointer text-center md:text-left'>Share Feedback</p>
                 </div>
                 <div className='flex flex-col gap-3'>
@@ -43,9 +67,9 @@ function Footer() {
                 <div className='flex flex-col gap-1 items-center md:items-start'>
                     <p className='p-2 text-xs md:text-base'>© {new Date().getFullYear()} STAR. All Rights Reserved.</p>
                     <div className='flex flex-wrap gap-3 items-center text-xs md:text-base justify-center md:justify-start'>
-                        <a href="#" className='hover:text-gray-400'>Terms Of Use</a>
-                        <a href="#" className='hover:text-gray-400'>Privacy Policy</a>
-                        <a href="#" className='hover:text-gray-400'>FAQ</a>
+                        <a href="#" className='hover:text-gray-400' onClick={termsHandler}>Terms Of Use</a>
+                        <a href="#" className='hover:text-gray-400' onClick={privacyHandler}>Privacy Policy</a>
+                        <a href="#" className='hover:text-gray-400' onClick={faqHandler}>FAQ</a>
                     </div>
                 </div>
                 <div className='flex gap-2 md:gap-4'>

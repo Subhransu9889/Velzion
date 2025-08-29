@@ -30,7 +30,8 @@ import {toast} from "sonner";
 import {api, ENDPOINT} from "@/lib/api";
 import {useDispatch, useSelector} from "react-redux";
 import {setLogIn} from "@/redux/userSlice";
-
+import {useContext} from 'react';
+import {StoreContext} from '@/context/StoreContext';
 
 const formSchema = z.object({
     email: z.string().email({ message: "Invalid email" }),
@@ -43,6 +44,7 @@ const Signin = () => {
     const dispatch = useDispatch();
     // @ts-ignore
     const userData = useSelector((state) => state.user);
+    const storeContext = useContext(StoreContext);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,6 +69,9 @@ const Signin = () => {
           })
           if(res.data.success) {
               toast.success('Login Successful');
+              if (storeContext) {
+                  storeContext.setToken(res.data.token);
+              }
               dispatch(setLogIn(res.data.user));
               router.push('/');
           }

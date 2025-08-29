@@ -30,21 +30,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-full bg-black`}
       >
-        <div className='flex w-full bg-black'>
             <StoreProvider>
             <AuthProvider>
             <Header/>
             <Toaster/>
-            <div className='w-full text-white ml-16'>
+            <div className='w-[95%] text-white ml-16'>
                 {children}
                 <Footer/>
             </div>
             </AuthProvider>
             </StoreProvider>
-
-        </div>
       </body>
     </html>
   );

@@ -31,23 +31,23 @@ export const ENDPOINT = {
     fetchMysteryTvShows: `/tv/mystery`,
     //
     // //extra data
-    // getMovieDetails: (id) => `/movies/details?id=${id}`,
-    // getTvShowsDetails: (id) => `/tv/details?id=${id}`,
+    getMovieDetails: (id) => `/movies/details?id=${id}`,
+    getTvShowsDetails: (id) => `/tv/details?id=${id}`,
     //
     // //user
     // user: "/user",
-    // addToWishlist: "/user/wishlist",
-    // getWishlist: "/user/wishlist",
+    addToWishlist: "/user/wishlist",
+    getWishlist: "/user/wishlist",
     //
     //
     // //payment
-    // payment: "/payment/order",
-    // updatePremium: "/payment/update-premium-access",
+    payment: "/payment/order",
+    updatePremium: "/payment/update-premium-access",
     //
     // // streaming urls
-    // fetchAllStreamingVideos: `/video`,
-    // fetchStreamingVideo: (id) => `/video?id=${id}`,
-    // fetchVideoThumbnail: (id) => `/video/thumbnail?videoId=${id}`,
+    fetchAllStreamingVideos: `/video`,
+    fetchStreamingVideo: (id) => `/video?id=${id}`,
+    fetchVideoThumbnail: (id) => `/video/thumbnail?videoId=${id}`,
 }
 
 export const media = (path) => `https://image.tmdb.org/t/p/original` + path;
@@ -57,4 +57,12 @@ export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export const api = axios.create({
     baseURL: API_BASE_URL,
     withCredentials: true,
-})
+});
+
+export function getWatchUrl(vidId, mediaType, poster_path) {
+    const prefix = mediaType === "tv" ? "tv" : "movies";
+    return `${prefix}/watch?id=${vidId}&poster_path=${poster_path}`;
+}
+
+export const getStreamingVideoThumbnail = (id) =>
+    API_BASE_URL + ENDPOINT.fetchVideoThumbnail(id);

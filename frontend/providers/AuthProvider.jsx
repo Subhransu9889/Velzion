@@ -1,19 +1,29 @@
 'use client'
-import React, {useEffect} from 'react'
+import React, {useEffect, useContext} from 'react'
 import {api, ENDPOINT} from "@/lib/api";
 import {useDispatch} from "react-redux";
 import {Loader2Icon} from "lucide-react";
 import {setLogIn} from "../redux/userSlice";
+import {StoreContext} from '@/context/StoreContext';
 
 const AuthProvider = ({children}) => {
     const dispatch = useDispatch();
     const [loading, setLoading] = React.useState(false);
+    const storeContext = useContext(StoreContext);
 
     useEffect(() => {
         setLoading(true);
         const fetcher = async () => {
             try{
-                const res = await api.get(ENDPOINT.user);
+                if (!storeContext || !storeContext.token) {
+                    setLoading(false);
+                    return;
+                }
+                
+                const res = await api.post(ENDPOINT.user, {}, {
+                    headers: { token: storeContext.token }
+                });
+                
                 console.log(res);
                 if(res.data.success) {
                     console.log(res.data.user);
@@ -26,7 +36,7 @@ const AuthProvider = ({children}) => {
             }
         }
         fetcher();
-    }, [dispatch]);
+    }, [dispatch, storeContext]);
 
     if(loading)
         return (
