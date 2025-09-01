@@ -130,7 +130,7 @@ export default function HelpCenterPage() {
                         {
                             title: "Email support",
                             desc: "Get a response within 24 hours from our support specialists.",
-                            cta: { label: "Email us", href: "mailto:support@velzion.com" },
+                            cta: { label: "Email us", href: "mailto:thecoder1official@gmail.com" },
                         },
                         {
                             title: "Live chat",

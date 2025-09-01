@@ -36,6 +36,12 @@
 
 ---
 
+![HOME_VELZION](public/velzion_home.png)
+
+-----------
+
+![ABOUT VELZION](public/about_velzion.png)
+
 ## 📁 Project Structure
 
 ```bash

@@ -1,4 +1,6 @@
+'use client'
 import React from "react";
+import {redirect} from "next/navigation";
 
 type Stat = {
     label: string;
@@ -13,6 +15,9 @@ const stats: Stat[] = [
 ];
 
 export default function About() {
+    const subscriptionHandler = () => {
+        redirect("/subscription");
+    }
     return (
         <main className="min-h-screen bg-gradient-to-b from-zinc-950 via-rose-950/25 to-black text-zinc-100">
             {/* Hero */}
@@ -117,7 +122,7 @@ export default function About() {
                             <li>Early feature access</li>
                             <li>Cancel anytime</li>
                         </ul>
-                        <button className="mt-6 w-full rounded-lg bg-rose-700 px-4 py-2 text-sm font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                        <button className="mt-6 w-full rounded-lg bg-rose-700 px-4 py-2 text-sm font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-500" onClick={() => subscriptionHandler()}>
                             Get Premium
                         </button>
                     </article>
@@ -138,7 +143,7 @@ export default function About() {
                             <li>Ad‑free for all members</li>
                             <li>Cancel anytime</li>
                         </ul>
-                        <button className="mt-6 w-full rounded-lg bg-rose-700 px-4 py-2 text-sm font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                        <button className="mt-6 w-full rounded-lg bg-rose-700 px-4 py-2 text-sm font-medium text-white hover:bg-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-500" onClick={() => subscriptionHandler()}>
                             Get Family
                         </button>
                     </article>
