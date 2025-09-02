@@ -1,7 +1,8 @@
+'use client'
 import React, {createContext, ReactNode, useEffect, useState} from 'react';
-import axios from "axios";
 import { useDispatch } from 'react-redux';
-import { setLogIn } from '../redux/userSlice';
+import { setLogIn } from '@/redux/userSlice';
+import { api, ENDPOINT, API_BASE_URL } from "@/lib/api";
 
 interface StoreProviderProps {
   children: ReactNode;
@@ -16,17 +17,9 @@ interface StoreContextType {
 export const StoreContext = createContext<StoreContextType | null>(null);
 
 const StoreProvider = ({ children }: StoreProviderProps) => {
-  const url = 'https://localhost:4000';
-  const [token, setToken] = useState<string | null>(null);
+  const url = API_BASE_URL as string;
+  const [token, setToken] = useState<string | null>(() => (typeof window !== 'undefined' ? localStorage.getItem('token') : null));
   const dispatch = useDispatch();
-
-  // Load token from localStorage on initial render
-  useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
 
   // Save token to localStorage when it changes
   useEffect(() => {
@@ -43,7 +36,7 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
       if (!token) return;
       
       try {
-        const res = await axios.post(url + '/user/current', {}, {
+        const res = await api.post(ENDPOINT.user, {}, {
           headers: { token }
         });
         

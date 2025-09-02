@@ -2,7 +2,7 @@
 
 **Velzion** is a modern, all-in-one entertainment platform where users can stream movies, TV shows, kids content, and more — all in one place. Designed for speed, responsiveness, and premium viewing experience.
 
-![Velzion Banner](/frontend/public/Velzion_brand.png) <!-- Optional: Add a banner image -->
+![Velzion Banner](public/Velzion_brand.png) <!-- Optional: Add a banner image -->
 
 ---
 
@@ -36,11 +36,11 @@
 
 ---
 
-![HOME_VELZION](public/velzion_home.png)
+![HOME_VELZION](Images/velzion_home.png)
 
 -----------
 
-![ABOUT VELZION](public/about_velzion.png)
+![ABOUT VELZION](Images/about_velzion.png)
 
 ## 📁 Project Structure
 

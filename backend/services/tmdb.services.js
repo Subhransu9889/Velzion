@@ -32,6 +32,8 @@ const TMDB_ENDPOINT = {
     fetchCrimeTvShows: `/discover/tv?language=en-US&with_genres=80`,
     fetchTvShowVideos: (id) => `/tv/${id}/videos`,
     fetchTvShowDetails: (id) => `/tv/${id}`,
+
+    fetchSearch: (query) => `/search/multi?query=${query}`,
 };
 
 

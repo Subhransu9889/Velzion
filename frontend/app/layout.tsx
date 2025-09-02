@@ -6,6 +6,7 @@ import Footer from "@/components/section/Footer";
 import {Toaster} from "sonner";
 import AuthProvider from "@/providers/AuthProvider";
 import StoreProvider from "@/providers/StoreProvider";
+import StoreContextProvider from "@/context/StoreContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex w-full bg-black`}
       >
             <StoreProvider>
+            <StoreContextProvider>
             <AuthProvider>
             <Header/>
             <Toaster/>
@@ -41,6 +43,7 @@ export default function RootLayout({
                 <Footer/>
             </div>
             </AuthProvider>
+            </StoreContextProvider>
             </StoreProvider>
       </body>
     </html>

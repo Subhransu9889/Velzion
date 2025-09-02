@@ -10,6 +10,7 @@ const TvRouter = require("./routes/TvRouter");
 const DiscoverRouter = require("./routes/DiscoverRouter");
 const VideoRouter = require("./routes/VideoRouter");
 const PaymentRouter = require("./routes/PaymentRouter");
+const searchRouter = require("./routes/SearchRoutes");
 
 // app config
 const app = express();
@@ -37,6 +38,9 @@ app.use("/api/movies", movieRouter);
 app.use("/api/tv", TvRouter);
 app.use("/api/discover", DiscoverRouter);
 app.use("/api/video", VideoRouter);
+
+//search routes
+app.use("/api", searchRouter);
 
 
 // payment
