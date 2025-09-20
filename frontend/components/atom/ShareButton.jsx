@@ -21,7 +21,7 @@ const ShareButton = () => {
             });
     };
     return (
-        <Button onClick={handleShare} >
+        <Button onClick={handleShare} className="cursor-pointer self-center">
             <Share2Icon className="w-4 h-4 mr-2" />
             Share
         </Button>

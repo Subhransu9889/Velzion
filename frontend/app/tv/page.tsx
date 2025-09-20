@@ -62,6 +62,7 @@ export default function Home() {
     const getTVBannerData = async () => {
         try {
             const resp = await api.get(ENDPOINT.fetchMysteryTvShows);
+            console.log(resp)
             return resp?.data?.response?.results || [];
         } catch (err) {
             console.error('Failed to fetch TV Banner (Mystery):', err?.message || err);

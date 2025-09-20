@@ -23,10 +23,8 @@ const AuthProvider = ({children}) => {
                 const res = await api.post(ENDPOINT.user, {}, {
                     headers: { token: storeContext.token }
                 });
-                
-                console.log(res);
+
                 if(res.data.success) {
-                    console.log(res.data.user);
                     dispatch(setLogIn(res.data.user));
                 }
             } catch (err){

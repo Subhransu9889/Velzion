@@ -40,8 +40,8 @@ const offers = [
 
 function Subscription() {
     const [activePrice, setActivePrice] = useState("");
-    const userData = useSelector(state => state.user);
     const dispatch = useDispatch();
+    const userData = useSelector((state: any) => state.user);
     const router = useRouter();
     const { Razorpay } = useRazorpay();
     const [loading, setLoading] = useState(false);
@@ -54,12 +54,13 @@ function Subscription() {
         // check -1
         if (activePrice === "") {
             toast(
-                "Select a card to join premium"
+                "Select a card to join Velzion Premium"
             )
             return
         }
         // not logged then send to home page
-        if (!userData.isLoggedIn) {
+        if (!userData.logIn) {
+            console.log(userData.login)
             router.push("/signin");
             return;
         }

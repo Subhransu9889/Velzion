@@ -43,6 +43,7 @@ const ProfileSheet = ({ setOpen }) => {
           <h3 className="text-xl font-bold capitalize">
               {login ? `Welcome, ${user?.name || 'User'}` : 'Guest'}
           </h3>
+          {user?.isPremium && <p className='text-sm md:text-base text-pink-700 font-semibold shadow-2xl p-2 text-center rounded-2xl'>Enjoy Premium</p>}
           <p className='text-sm md:text-base text-gray-500 shadow-2xl p-2 text-center rounded-2xl'>Dive into your personalized entertainment universe!</p>
           <div className='mt-6 w-full'>
               {
@@ -54,7 +55,6 @@ const ProfileSheet = ({ setOpen }) => {
                               {[
                                   { label: 'Subscribe Now', href: '/subscription' },
                                   { label: 'Home', href: '/' },
-                                  { label: 'Movies', href: '/movies' },
                                   { label: 'Bookmarks', href: '/' },
                                   { label: '+', href: '/plus' },
                                   { label: 'Help & Legal', href: '/help-center' },

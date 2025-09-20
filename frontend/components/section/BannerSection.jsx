@@ -52,7 +52,7 @@ async function BannerSectionContent({fetcher}) {
                                 {/* Overlay title on hover */}
                                 <div className="absolute inset-0 flex flex-col items-start justify-end bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
                                     <span className="text-pink-700 text-3xl font-bold text-center px-4 drop-shadow-lg">
-                                        {vid.original_title}
+                                        {vid.original_title || vid.name}
                                     </span>
                                     <div className='p-2 font-semibold flex flex-col gap-1'>
                                         <p className='text-sm font-semibold'>{vid.overview}</p>
